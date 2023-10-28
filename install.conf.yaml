@@ -4,15 +4,16 @@
     create:
       mode: 0700
 
+- create:
+    ~/Projects:
+
 - clean: ['~']
 
 - link:
     ~/.dotfiles: ""
+    ~/.gitconfig:
+    ~/.gitignore-global:
     ~/.Brewfile:
-
-- create:
-    ~/.ssh:
-    ~/Projects:
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
