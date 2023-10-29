@@ -10,10 +10,14 @@
 - clean: ['~']
 
 - link:
-    ~/.dotfiles: ""
+    ~/.dotfiles:
+      if: 'if [[ -d ~/.dotfiles ]]; then mv ~/.dotfiles ~/Projects; fi'
+      path: ~/Projects/.dotfiles
     ~/.gitconfig:
+      force: true
     ~/.gitignore-global:
     ~/.Brewfile:
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
+
