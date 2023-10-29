@@ -11,8 +11,8 @@
 
 - link:
     ~/.dotfiles:
-      if: 'if [[ -d ~/.dotfiles ]]; then mv ~/.dotfiles ~/Projects; fi'
-      path: ~/Projects/.dotfiles
+      if: 'if [[ -d ~/.dotfiles ]]; then mv ~/.dotfiles ~/Projects/dotfiles; fi'
+      path: ~/Projects/dotfiles
     ~/.gitconfig:
       force: true
     ~/.gitignore-global:
