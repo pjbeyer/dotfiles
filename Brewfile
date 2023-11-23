@@ -1,15 +1,16 @@
 tap "homebrew/bundle"
+brew "antigen"
 brew "mackup"
 brew "mas"
 brew "mosh"
 brew "ruby"
 cask "1password"
 cask "1password-cli"
-cask "authy"
 cask "google-chrome"
 cask "keybase"
 cask "kiwi-for-gmail"
 cask "notion"
+cask "raindropio"
 cask "remarkable"
 cask "setapp"
 cask "textexpander"
@@ -23,11 +24,13 @@ mas "Hand Mirror", id: 1502839586
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
 mas "Kindle", id: 302584613
+mas "Momentum", id: 1564329434
 mas "Notion Web Clipper", id: 1559269364
 mas "Numbers", id: 409203825
 mas "OmniFocus", id: 1346203938
 mas "OmniOutliner", id: 1142578772
 mas "Pages", id: 409201541
 mas "Privacy.com for Safari", id: 6449850851
+mas "Save to Raindrop.io", id: 1549370672
 mas "Save to Reader", id: 1640236961
 mas "Xcode", id: 497799835
