@@ -11,12 +11,15 @@
 
 - link:
     ~/.dotfiles:
-      if: 'if [[ -d ~/.dotfiles ]]; then mv ~/.dotfiles ~/Projects/dotfiles; fi'
+      if: 'if [[ ! -h ~/.dotfiles && -d ~/.dotfiles && ! -a ~/Projects/dotfiles ]]; then mv ~/.dotfiles ~/Projects/dotfiles; fi'
       path: ~/Projects/dotfiles
+    ~/.Brewfile:
     ~/.gitconfig:
       force: true
     ~/.gitignore-global:
-    ~/.Brewfile:
+    ~/.shell:
+    ~/.zsh:
+    ~/.zshrc:
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
