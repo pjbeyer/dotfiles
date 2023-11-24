@@ -1,8 +1,5 @@
-# Load plugins
-source ~/.shell/plugins/chruby.sh
-
 # Load Zsh plugins
 source ~/.zsh/plugins/antigen.zsh
 
-# Load settings
+# Load Zsh settings
 source ~/.zsh/settings.zsh
