@@ -7,6 +7,9 @@ antigen bundle git
 # Load syntax highlighting bundle
 antigen bundle zsh-users/zsh-syntax-highlighting
 
+# Load gitignore template bundle
+antigen bundle voronkovich/gitignore.plugin.zsh
+
 # Load OS-specific bundles
 case `uname` in
   Darwin)
