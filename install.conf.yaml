@@ -16,7 +16,7 @@
     ~/.Brewfile:
     ~/.gitconfig:
       force: true
-    ~/.gitignore-global:
+    ~/.gitignore_global:
     ~/.shell:
     ~/.zprofile:
     ~/.zsh:

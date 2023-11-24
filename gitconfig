@@ -1,8 +1,5 @@
 [push]
     default = simple
 
-[credential]
-    helper = osxkeychain
-
 [core]
-	excludesfile = ~/.gitignore-global
+	excludesfile = ~/.gitignore_global
