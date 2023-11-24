@@ -5,6 +5,9 @@ source ~/.shell/functions.sh
 source ~/.shell/path.sh
 
 # Load plugins
+source ~/.shell/plugins/chruby.sh
+
+# Load Zsh plugins
 source ~/.zsh/plugins/antigen.zsh
 
 # Load settings
