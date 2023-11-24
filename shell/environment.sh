@@ -1,5 +1,5 @@
 # XDG Base Directory Specification
-XDG_CONFIG_HOME=~/.config
-XDG_BIN_HOME=~/.local/bin
-XDG_DATA_HOME=~/.local/share
-XDG_CACHE_HOME=~/.cache
+export XDG_CONFIG_HOME=~/.config
+export XDG_BIN_HOME=~/.local/bin
+export XDG_DATA_HOME=~/.local/share
+export XDG_CACHE_HOME=~/.cache
