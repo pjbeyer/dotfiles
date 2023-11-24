@@ -5,5 +5,7 @@ source ~/.shell/functions.sh
 source ~/.shell/path.sh
 
 # Load plugins
-source ~/.shell/plugins/autoenv.sh
 source ~/.shell/plugins/chruby.sh
+
+# Load Zsh plugins
+source ~/.zsh/plugins/direnv.zsh
