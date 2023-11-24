@@ -18,7 +18,9 @@
       force: true
     ~/.gitignore-global:
     ~/.shell:
+    ~/.zprofile:
     ~/.zsh:
+    ~/.zshenv:
     ~/.zshrc:
 
 - shell:
