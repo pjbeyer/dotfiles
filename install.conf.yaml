@@ -14,9 +14,9 @@
       if: 'if [[ ! -h ~/.dotfiles && -d ~/.dotfiles && ! -a ~/Projects/dotfiles ]]; then mv ~/.dotfiles ~/Projects/dotfiles; fi'
       path: ~/Projects/dotfiles
     ~/.Brewfile:
+    ~/.config:
     ~/.gitconfig:
       force: true
-    ~/.gitignore_global:
     ~/.shell:
     ~/.zprofile:
     ~/.zsh:
