@@ -1,8 +1,8 @@
 
 # Load environment variables
-source ~/.shell/environment.sh
+source ~/.config/shell/environment.sh
 
-# Include local customization
-if [ -e ~/.zshenv_local ]; then
-    source ~/.zshenv_local
+# Allow local customization
+if [ -e ~/.config/zsh/zshenv ]; then
+    source ~/.config/zsh/zshenv
 fi
