@@ -5,24 +5,35 @@
       mode: 0700
 
 - create:
+    ~/.config:
+    ~/.config/git:
+    ~/.config/shell:
+    ~/.config/shell/plugins:
+    ~/.config/zsh:
+    ~/.config/zsh/plugins:
     ~/Projects:
 
-- clean: ['~']
+- clean:
+    ~/:
+    ~/.config:
+      recursive: true
 
 - link:
     ~/.dotfiles:
       if: 'if [[ ! -h ~/.dotfiles && -d ~/.dotfiles && ! -a ~/Projects/dotfiles ]]; then mv ~/.dotfiles ~/Projects/dotfiles; fi'
       path: ~/Projects/dotfiles
     ~/.Brewfile:
-    ~/.config:
+    ~/.config/git/ignore: config/git/ignore
+    ~/.config/shell/environment.sh: config/shell/environment.sh
+    ~/.config/shell/functions.sh: config/shell/functions.sh
+    ~/.config/shell/path.sh: config/shell/path.sh
+    ~/.config/zsh/plugins/antigen.zsh: config/zsh/plugins/antigen.zsh
+    ~/.config/zsh/settings.zsh: config/zsh/settings.zsh
     ~/.gitconfig:
       force: true
-    ~/.shell:
     ~/.zprofile:
-    ~/.zsh:
     ~/.zshenv:
     ~/.zshrc:
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
-

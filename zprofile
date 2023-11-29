@@ -1,16 +1,16 @@
 # Load functions
-source ~/.shell/functions.sh
+source ~/.config/shell/functions.sh
 
 # Update path
-source ~/.shell/path.sh
+source ~/.config/shell/path.sh
 
 # Load plugins
-source ~/.shell/plugins/chruby.sh
+source ~/.config/shell/plugins/chruby.sh
 
 # Load Zsh plugins
-source ~/.zsh/plugins/direnv.zsh
+source ~/.config/zsh/plugins/direnv.zsh
 
-# Include local customization
-if [ -e ~/.zprofile_local ]; then
-    source ~/.zprofile_local
+# Allow local customization
+if [ -e ~/.config/zsh/zprofile ]; then
+    source ~/.config/zsh/zprofile
 fi
