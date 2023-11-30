@@ -1,8 +1,6 @@
 - defaults:
     link:
       relink: true
-    create:
-      mode: 0700
 
 - create:
     ~/.config:
@@ -12,6 +10,11 @@
     ~/.config/zsh:
     ~/.config/zsh/plugins:
     ~/Projects:
+
+- shell:
+    command: chmod 0700 ~/.config ~/.config/git ~/.config/shell ~/.config/shell/plugins ~/.config/zsh ~/.config/zsh/plugins ~/Projects
+    description: Setting directory permissions
+    quiet: true
 
 - clean:
     ~/:
