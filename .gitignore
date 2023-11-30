@@ -1,3 +1,8 @@
+# Zsh history + sessions #
+########################################
+.zsh_history
+.zsh_sessions
+
 # Zsh compiled script + zrecompile backup #
 ###########################################
 *.zwc
