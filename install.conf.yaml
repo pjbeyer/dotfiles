@@ -28,9 +28,7 @@
     ~/.config/zsh: config/zsh
     ~/.gitconfig:
       force: true
-    ~/.zprofile:
     ~/.zshenv:
-    ~/.zshrc:
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
