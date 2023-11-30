@@ -5,6 +5,6 @@ source ~/.config/shell/functions.sh
 source ~/.config/shell/path.sh
 
 # Allow local customization
-if [ -e ~/.config/zsh/zprofile ]; then
-    source ~/.config/zsh/zprofile
+if [ -e ~/.config/local/zsh/zprofile ]; then
+    source ~/.config/local/zsh/zprofile
 fi
