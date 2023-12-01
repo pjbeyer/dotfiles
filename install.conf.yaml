@@ -22,8 +22,8 @@
     ~/.dotfiles:
       if: 'if [[ ! -L ~/.dotfiles && -d ~/.dotfiles && ! -e ~/Projects/dotfiles ]]; then mv ~/.dotfiles ~/Projects/dotfiles; fi'
       path: ~/Projects/dotfiles
-    ~/.Brewfile:
     ~/.config/git/ignore: config/git/ignore
+    ~/.config/homebrew: config/homebrew
     ~/.config/shell: config/shell
     ~/.config/zsh: config/zsh
     ~/.gitconfig:

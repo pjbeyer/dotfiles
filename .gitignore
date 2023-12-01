@@ -11,3 +11,7 @@
 # Zsh completion-optimization dumpfile #
 ########################################
 *zcompdump*
+
+# Homebrew lock file #
+######################
+Brewfile.lock.json
