@@ -1,3 +1,6 @@
+# Load plugins
+source $XDG_CONFIG_HOME/shell/plugins/homebrew-file.sh
+
 # Load Zsh plugins
 source $ZDOTDIR/plugins/antigen.zsh
 
