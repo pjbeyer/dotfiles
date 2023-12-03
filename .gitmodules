@@ -5,4 +5,4 @@
 [submodule "config/homebrew/pjbeyer_homebrew-brewfile"]
 	path = config/homebrew/pjbeyer_homebrew-brewfile
 	url = git@github.com:pjbeyer/homebrew-brewfile.git
-	ignore = dirty
+	ignore = all
