@@ -2,3 +2,10 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
+[submodule "config/homebrew/pjbeyer_homebrew-brewfile"]
+	path = config/homebrew/pjbeyer_homebrew-brewfile
+	url = git@github.com:pjbeyer/homebrew-brewfile.git
+	ignore = all
+[submodule "config/macOS"]
+	path = config/macOS
+	url = git@github.com:pjbeyer/macOS-Defaults.git
