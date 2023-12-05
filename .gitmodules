@@ -6,3 +6,6 @@
 	path = config/homebrew/pjbeyer_homebrew-brewfile
 	url = git@github.com:pjbeyer/homebrew-brewfile.git
 	ignore = all
+[submodule "config/macos"]
+	path = config/macos
+	url = git@github.com:pjbeyer/macOS-setup.git
