@@ -1,6 +1,9 @@
 [push]
 	default = simple
 
+[fetch]
+	prune = true
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
