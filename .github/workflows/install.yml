@@ -1,0 +1,25 @@
+# Use GitHub Actions to install dotfiles as a continuous integration test
+
+name: CI
+
+on:
+  # Trigger the workflow on push or pull request events for the default branch
+  push:
+    branches: [ $default-branch ]
+  pull_request:
+    branches: [ $default-branch ]
+
+  # Allow workflow to run manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run install script
+        run: |
+          mkdir -p ~/dotfiles-install-dir
+          HOME=~/dotfiles-install-dir ./install
