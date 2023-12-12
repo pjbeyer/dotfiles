@@ -12,6 +12,10 @@
     command: chmod 0700 ~/.config ~/.config/git ~/Projects
     description: Setting directory permissions
     quiet: true
+  -
+    command: if [[ ! -e ~/Projects/dotfiles ]]; then mv "$PWD" ~/Projects/dotfiles; fi
+    description: Relocate dotfiles if necessary
+    quiet: true
 
 - clean:
     ~/:
@@ -19,9 +23,7 @@
       recursive: true
 
 - link:
-    ~/.dotfiles:
-      if: 'if [[ ! -L ~/.dotfiles && -d ~/.dotfiles && ! -e ~/Projects/dotfiles ]]; then mv ~/.dotfiles ~/Projects/dotfiles; fi'
-      path: ~/Projects/dotfiles
+    ~/.dotfiles: ''
     ~/.config/git/ignore: config/git/ignore
     ~/.config/homebrew: config/homebrew
     ~/.config/shell: config/shell
