@@ -1,5 +1,5 @@
 # Zsh history + sessions #
-########################################
+##########################
 .zsh_history
 .zsh_sessions
 
@@ -11,3 +11,7 @@
 # Zsh completion-optimization dumpfile #
 ########################################
 *zcompdump*
+
+# Homebrew-file repository #
+############################
+config/homebrew/*_homebrew-brewfile*
