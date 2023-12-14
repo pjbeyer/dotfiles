@@ -27,8 +27,7 @@ Thank you [@anishathalye][@anishathalye] for [Dotbot][dotbot] and for the exampl
 License
 -------
 
-This software is hereby released into the public domain. That means you can do
-whatever you want with it without restriction. See `LICENSE.md` for details.
+This software is hereby released into the public domain. That means you can do whatever you want with it without restriction. See `LICENSE` for details.
 
 [dotbot]: https://github.com/anishathalye/dotbot
 [strap]: https://github.com/MikeMcQuaid/strap

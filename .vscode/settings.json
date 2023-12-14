@@ -1,5 +1,6 @@
 {
     "markdownlint.ignore": [
-        "LICENSE.md"
+        "LICENSE",
+        "config/macos/LICENSE"
     ]
 }
