@@ -1,40 +1,28 @@
-Dotfiles Template
-=================
+Phil's Dotfiles
+===============
 
-This is a template repository for bootstrapping your dotfiles with [Dotbot][dotbot].
+My `dotfiles` leverage [Dotbot][dotbot] for installation and are designed to be compatible with [strap][strap].
 
-To get started, you can [create a new repository from this template][template]
-(or you can [fork][fork] this repository, if you prefer). You can probably
-delete this README and rename your version to something like just `dotfiles`.
+Getting Started
+---------------
 
-In general, you should be using symbolic links for everything, and using git
-submodules whenever possible.
+To get started on your `dotfiles` with [Dotbot][dotbot], you can [bootstrap from this template][template] or [fork this repository][fork].
 
-To keep submodules at their proper versions, you could include something like
-`git submodule update --init --recursive` in your `install.conf.yaml`.
+In general, you should be using symbolic links for everything, and using `git` submodules whenever possible.
 
-To upgrade your submodules to their latest versions, you could periodically run
-`git submodule update --init --remote`.
+To keep submodules at their proper versions, you could include something like `git submodule update --init --recursive` in your `install.conf.yaml`.
 
-Inspiration
------------
+To upgrade your submodules to their latest versions, you could periodically run `git submodule update --init --remote`.
 
-If you're looking for inspiration for how to structure your dotfiles or what
-kinds of things you can include, you could take a look at some repos using
-Dotbot.
+Making Local Customizations
+---------------------------
 
-* [anishathalye's dotfiles][anishathalye_dotfiles]
-* [csivanich's dotfiles][csivanich_dotfiles]
-* [m45t3r's dotfiles][m45t3r_dotfiles]
-* [alexwh's dotfiles][alexwh_dotfiles]
-* [azd325's dotfiles][azd325_dotfiles]
-* [wazery's dotfiles][wazery_dotfiles]
-* [thirtythreeforty's dotfiles][thirtythreeforty_dotfiles]
+My `dotfiles` support local customization and machine-specific configuration using a separate, private repository. See [@anishathalye][@anishathalye]'s [dotfiles-local][anishathalye_dotfiles-local] for a detailed explanation with examples.
 
-And there are about [700 more here][dotbot-users].
+Credit
+------
 
-If you're using Dotbot and you'd like to include a link to your dotfiles here
-as an inspiration to others, please submit a pull request.
+Thank you [@anishathalye][@anishathalye] for [Dotbot][dotbot] and for the example of your own [dotfiles][anishathalye_dotfiles] and [dotfiles-local][anishathalye_dotfiles-local]. If anyone is looking for further inspiration, there are [many more Dotbot users available to peruse][dotbot-users].
 
 License
 -------
@@ -42,17 +30,11 @@ License
 This software is hereby released into the public domain. That means you can do
 whatever you want with it without restriction. See `LICENSE.md` for details.
 
-That being said, I would appreciate it if you could maintain a link back to
-Dotbot (or this repository) to help other people discover Dotbot.
-
 [dotbot]: https://github.com/anishathalye/dotbot
-[fork]: https://github.com/anishathalye/dotfiles_template/fork
+[strap]: https://github.com/MikeMcQuaid/strap
 [template]: https://github.com/anishathalye/dotfiles_template/generate
+[fork]: https://github.com/anishathalye/dotfiles_template/fork
+[@anishathalye]: https://github.com/anishathalye
+[anishathalye_dotfiles-local]: https://github.com/anishathalye/dotfiles-local
 [anishathalye_dotfiles]: https://github.com/anishathalye/dotfiles
-[csivanich_dotfiles]: https://github.com/csivanich/dotfiles
-[m45t3r_dotfiles]: https://github.com/m45t3r/dotfiles
-[alexwh_dotfiles]: https://github.com/alexwh/dotfiles
-[azd325_dotfiles]: https://github.com/Azd325/dotfiles
-[wazery_dotfiles]: https://github.com/wazery/dotfiles
-[thirtythreeforty_dotfiles]: https://github.com/thirtythreeforty/dotfiles
 [dotbot-users]: https://github.com/anishathalye/dotbot/wiki/Users
