@@ -26,6 +26,7 @@
     ~/.dotfiles: ''
     ~/.config/git/ignore: config/git/ignore
     ~/.config/homebrew: config/homebrew
+    ~/.config/macos: config/macos
     ~/.config/shell: config/shell
     ~/.config/zsh: config/zsh
     ~/.gitconfig:

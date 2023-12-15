@@ -2,3 +2,6 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
+[submodule "config/macos"]
+	path = config/macos
+	url = git@github.com:pjbeyer/macOS-setup.git

@@ -1,6 +1,7 @@
 {
     "markdownlint.ignore": [
         "LICENSE",
-        "config/macos/LICENSE"
+        "config/macos/LICENSE",
+        "config/homebrew/*"
     ]
 }
