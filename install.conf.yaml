@@ -3,8 +3,12 @@
       relink: true
 
 - create:
+    ~/.cache:
     ~/.config:
     ~/.config/git:
+    ~/.local:
+    ~/.local/share:
+    ~/.local/state:
     ~/Projects:
 
 - shell:
