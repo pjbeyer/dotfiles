@@ -7,6 +7,7 @@ export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 # Load Homebrew shell environment
 if [ -x /opt/homebrew/bin/brew ]; then
   eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+  FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:${FPATH}"
 fi
 
 # Allow local customization
