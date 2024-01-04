@@ -4,6 +4,9 @@ antigen use oh-my-zsh
 # Load syntax highlighting bundle
 antigen bundle zsh-users/zsh-syntax-highlighting
 
+# Load additional completion definitions
+antigen bundle zsh-users/zsh-completions
+
 # Load OS-specific bundles
 case `uname` in
   Darwin)
