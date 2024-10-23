@@ -25,7 +25,10 @@
       recursive: true
 
 - link:
+    ~/.bash_profile:
+    ~/.bashrc:
     ~/.dotfiles: ""
+    ~/.config/bash: config/bash
     ~/.config/git/ignore: config/git/ignore
     ~/.config/homebrew: config/homebrew
     ~/.config/macos: config/macos
@@ -33,6 +36,7 @@
     ~/.config/zsh: config/zsh
     ~/.gitconfig:
       force: true
+    ~/.profile:
     ~/.zshenv:
 
 - shell:
