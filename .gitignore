@@ -12,6 +12,10 @@
 ########################################
 *zcompdump*
 
+# Bash history #
+################
+.bash_history
+
 # Homebrew-file repository #
 ############################
 config/homebrew/*_homebrew-brewfile*
