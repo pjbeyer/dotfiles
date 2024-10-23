@@ -12,14 +12,12 @@
     ~/Projects:
 
 - shell:
-  -
-    command: chmod 0700 ~/.config ~/.config/git ~/Projects
-    description: Setting directory permissions
-    quiet: true
-  -
-    command: if [[ ! -e ~/Projects/dotfiles ]]; then mv "$PWD" ~/Projects/dotfiles; fi
-    description: Relocate dotfiles if necessary
-    quiet: true
+    - command: chmod 0700 ~/.config ~/.config/git ~/Projects
+      description: Setting directory permissions
+      quiet: true
+    - command: if [[ ! -e ~/Projects/dotfiles ]]; then mv "$PWD" ~/Projects/dotfiles; fi
+      description: Relocate dotfiles if necessary
+      quiet: true
 
 - clean:
     ~/:
@@ -27,7 +25,10 @@
       recursive: true
 
 - link:
-    ~/.dotfiles: ''
+    ~/.bash_profile:
+    ~/.bashrc:
+    ~/.dotfiles: ""
+    ~/.config/bash: config/bash
     ~/.config/git/ignore: config/git/ignore
     ~/.config/homebrew: config/homebrew
     ~/.config/macos: config/macos
@@ -35,7 +36,8 @@
     ~/.config/zsh: config/zsh
     ~/.gitconfig:
       force: true
+    ~/.profile:
     ~/.zshenv:
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
+    - [git submodule update --init --recursive, Installing submodules]
