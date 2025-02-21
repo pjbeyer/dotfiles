@@ -33,6 +33,7 @@
     ~/.config/homebrew: config/homebrew
     ~/.config/macos: config/macos
     ~/.config/shell: config/shell
+    ~/.config/uv: config/uv
     ~/.config/zsh: config/zsh
     ~/.gitconfig:
       force: true
