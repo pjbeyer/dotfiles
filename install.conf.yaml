@@ -31,6 +31,7 @@
     ~/.config/bash: config/bash
     ~/.config/git/ignore: config/git/ignore
     ~/.config/homebrew: config/homebrew
+    ~/.config/launchd: config/launchd
     ~/.config/macos: config/macos
     ~/.config/shell: config/shell
     ~/.config/zsh: config/zsh
@@ -38,6 +39,7 @@
       force: true
     ~/.profile:
     ~/.zshenv:
+    ~/Library/LaunchAgents/environment.plist: config/launchd/agents/environment.plist
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
