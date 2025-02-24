@@ -31,6 +31,7 @@
     ~/.dotfiles: ""
     ~/.config/bash: config/bash
     ~/.config/git/ignore: config/git/ignore
+    ~/.config/gnupg: config/gnupg
     ~/.config/homebrew: config/homebrew
     ~/.config/launchd: config/launchd
     ~/.config/macos: config/macos

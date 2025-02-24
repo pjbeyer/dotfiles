@@ -5,6 +5,10 @@ launchctl setenv XDG_DATA_HOME ~/.local/share
 launchctl setenv XDG_STATE_HOME ~/.local/state
 launchctl setenv XDG_CACHE_HOME ~/.cache
 
+# GnuPG settings
+launchctl setenv GNUPGHOME $XDG_CONFIG_HOME/gnupg
+launchctl setenv GPG_TTY $(tty)
+
 # Allow local customization
 if [ -e $XDG_CONFIG_HOME/local/launchd/environment.sh ]; then
   source $XDG_CONFIG_HOME/local/launchd/environment.sh
