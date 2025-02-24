@@ -16,6 +16,13 @@
 ################
 .bash_history
 
+# GnuPG files #
+###############
+config/gnupg/pubring.kbx*
+config/gnupg/trustdb.gpg
+config/gnupg/private-keys*
+config/gnupg/S.gpg-agent*
+
 # Homebrew-file repository #
 ############################
 config/homebrew/*_homebrew-brewfile*
