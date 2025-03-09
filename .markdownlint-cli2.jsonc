@@ -1,0 +1,4 @@
+{
+  "gitignore": true,
+  "ignores": ["LICENSE", "config/macos/LICENSE", "config/homebrew/.Brewfile"]
+}
