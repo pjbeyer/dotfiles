@@ -35,6 +35,7 @@
     ~/.config/homebrew: config/homebrew
     ~/.config/launchd: config/launchd
     ~/.config/macos: config/macos
+    ~/.config/ruff: config/ruff
     ~/.config/shell: config/shell
     ~/.config/uv: config/uv
     ~/.config/zsh: config/zsh
