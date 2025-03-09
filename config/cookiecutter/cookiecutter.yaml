@@ -1,0 +1,2 @@
+cookiecutters_dir: "$XDG_DATA_HOME/cookiecutter/templates/"
+replay_dir: "$XDG_DATA_HOME/cookiecutter/replay/"
