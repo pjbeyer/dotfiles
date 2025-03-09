@@ -39,6 +39,7 @@
     ~/.config/shell: config/shell
     ~/.config/uv: config/uv
     ~/.config/zsh: config/zsh
+    ~/.cookiecutterrc: config/cookiecutter/cookiecutter.yaml
     ~/.gitconfig:
       force: true
     ~/.profile:
