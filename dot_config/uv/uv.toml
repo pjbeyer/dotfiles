@@ -1,0 +1,4 @@
+# Define default package index
+[[index]]
+url = "https://pypi.org/simple"
+default = true
