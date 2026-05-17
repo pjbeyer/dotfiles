@@ -1,0 +1,28 @@
+# secrets/bootstrap internals
+key.txt.age
+
+# macOS noise
+.DS_Store
+
+# shell/generated state
+**/.zsh_history
+**/.zsh_sessions/**
+**/*.zwc
+**/.bash_history
+
+# generated dependencies/caches
+**/node_modules/**
+**/.cache/**
+**/package-lock.json
+
+# GnuPG state/keyrings/sockets/locks
+**/gnupg/private-keys-v1.d/**
+**/gnupg/pubring.kbx*
+**/gnupg/trustdb.gpg
+**/gnupg/S.gpg-agent*
+**/gnupg/.#lk*
+
+# tool backups/local overrides
+**/*.backup-*
+**/*.bak.*
+**/*.local
