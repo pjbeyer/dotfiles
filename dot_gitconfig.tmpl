@@ -1,0 +1,71 @@
+[push]
+	default = simple
+
+[fetch]
+	prune = true
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[include]
+	path = ~/.config/git/config
+
+[includeIf "gitdir:{{ .chezmoi.homeDir }}/Projects/pjbeyer/"]
+	path = ~/.config/git/config-pjbeyer
+
+[includeIf "gitdir:{{ .chezmoi.homeDir }}/Projects/work/"]
+	path = ~/.config/git/config-work
+
+[includeIf "gitdir:{{ .chezmoi.homeDir }}/Projects/play/"]
+	path = ~/.config/git/config-play
+
+[includeIf "gitdir:{{ .chezmoi.homeDir }}/Projects/home/"]
+	path = ~/.config/git/config-home
+
+[includeIf "gitdir:{{ .chezmoi.homeDir }}/Demonstrations/pjbeyer/"]
+	path = ~/.config/git/config-pjbeyer
+
+[includeIf "gitdir:{{ .chezmoi.homeDir }}/Demonstrations/work/"]
+	path = ~/.config/git/config-work
+
+[includeIf "gitdir:{{ .chezmoi.homeDir }}/Demonstrations/play/"]
+	path = ~/.config/git/config-play
+
+[includeIf "gitdir:{{ .chezmoi.homeDir }}/Demonstrations/home/"]
+	path = ~/.config/git/config-home
+
+# ============================================
+# Plugin Cache: Remote URL-based matching
+# (git 2.36+)
+# ============================================
+
+# Personal plugins (github.com/pjbeyer/*)
+[includeIf "hasconfig:remote.*.url:git@github.com:pjbeyer/**"]
+	path = ~/.config/git/config-pjbeyer
+
+[includeIf "hasconfig:remote.*.url:https://github.com/pjbeyer/**"]
+	path = ~/.config/git/config-pjbeyer
+
+# Work plugins (github.com/flexapp/*)
+[includeIf "hasconfig:remote.*.url:git@github.com:flexapp/**"]
+	path = ~/.config/git/config-work
+
+[includeIf "hasconfig:remote.*.url:https://github.com/flexapp/**"]
+	path = ~/.config/git/config-work
+
+# Marketplace plugins (if you maintain forks)
+[includeIf "hasconfig:remote.*.url:*superpowers-marketplace*"]
+	path = ~/.config/git/config-pjbeyer
+
+[includeIf "hasconfig:remote.*.url:*claude-code-templates*"]
+	path = ~/.config/git/config-pjbeyer
+[credential]
+	helper = osxkeychain
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[url "https://github.com/"]
+	insteadOf = git@github.com:
