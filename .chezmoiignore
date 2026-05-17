@@ -1,3 +1,6 @@
+# source-only documentation
+/docs/**
+
 # secrets/bootstrap internals
 key.txt.age
 
