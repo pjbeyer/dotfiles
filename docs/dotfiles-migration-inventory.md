@@ -114,7 +114,10 @@ This is a non-destructive baseline for migrating from Dotbot to chezmoi. It reco
 | `~/.ssh/config.d/` | local | private template | `private_dot_ssh/config.d/` | Current dirty changes; review before import. |
 | `~/.ssh/known_hosts.d/` | local | local/state-ish | maybe ignore or private | Known hosts change often; consider not managing except curated entries. |
 | `~/.ssh/rc` | local | private/portable | `private_dot_ssh/rc` | Review content before import. |
-| `~/.config/homebrew` | main | portable + host templates | `dot_config/homebrew/` | Existing Brewfiles already split by domain and host. Strong chezmoi fit. |
+| `~/.config/homebrew/brew.env` | main | portable template | `dot_config/homebrew/brew.env.tmpl` | Imported. Keep Homebrew behavior/config here; template home path. |
+| `~/.config/homebrew/.Brewfile` | main | portable homebrew-file pointer | `dot_config/homebrew/dot_Brewfile` | Imported as pointer to external `homebrew-brewfile` repo, not as Brewfile collection ownership. |
+| `~/.config/homebrew/pjbeyer_homebrew-brewfile/` | separate repo | external package manifest repo | do not import | User intends to keep this repo as the Brewfile collection source of truth. |
+| `~/.config/shell/plugins/homebrew-file.sh` | main | portable shell plugin | `dot_config/shell/plugins/homebrew-file.sh` | Imported. Depends on Homebrew prefix and `brew-wrap`; validate before apply. |
 | `~/.config/ruff` | main | portable | `dot_config/ruff/` | Safe early import. |
 | `~/.config/uv` | main | portable | `dot_config/uv/` | Safe early import. |
 | `~/.config/cookiecutter` / `~/.cookiecutterrc` | main | portable | `dot_cookiecutterrc` or `dot_config/cookiecutter/` | Decide whether to preserve legacy symlink. |
@@ -124,10 +127,10 @@ This is a non-destructive baseline for migrating from Dotbot to chezmoi. It reco
 | `~/.config/gnupg` | main | sensitive/stateful | defer | Do not blindly import keyrings, trustdb, sockets, lock files. Manage only static config (`gpg.conf`, `gpg-agent.conf`, `dirmngr.conf`) if desired. |
 | `~/.config/1Password` | local/live | private/tool config | defer/private | Some files are generated or sensitive. Use explicit allowlist. |
 | `~/.config/op` | live | private/tool config | defer/private | Use explicit allowlist; prefer 1Password/keychain bootstrap convention. |
-| `~/.config/opencode` | live | mixed generated + curated | defer/allowlist | Many backups/node_modules/local files. Do not import wholesale. |
-| `~/.config/claude` | live | mixed curated/private | defer/allowlist | MCP profiles may include secrets/paths. Review and template. |
-| `~/.config/wezterm` | live | portable app config | import after review | Likely good candidate once source ownership decided. |
-| `~/.config/yazi` | live | portable app config | import after review | Likely good candidate. |
+| `~/.config/opencode` | live | mixed generated + curated/private | defer/encrypt/allowlist | User wants coding agent and GenAI configs included eventually. Use chezmoi-native encryption and explicit allowlists; exclude `node_modules`, backups, accounts/session state. |
+| `~/.config/claude` | live | mixed curated/private | defer/encrypt/allowlist | User wants coding agent and GenAI configs included eventually. Review MCP profiles for secrets and template/encrypt with chezmoi-native encryption. |
+| `~/.config/wezterm` | live/legacy | do-not-manage | do not import | User is no longer using WezTerm. Keep out of chezmoi unless direction changes. |
+| `~/.config/yazi/yazi.toml`, `package.toml` | live | portable app config | `dot_config/yazi/` | Imported reviewed user config only. Downloaded plugin code under `plugins/` remains generated/vendor state. |
 | `~/.config/direnv` | live | portable/private mix | import after review | Check for secrets before import. |
 | `~/.npmrc` | live | potentially sensitive | defer/template | May contain auth or registry config. Redact/review. |
 | `~/.zshrc` | live unmanaged | drift | remove or absorb | Currently only adds `.npm-global/bin`; should move into XDG path logic if needed. |
@@ -140,3 +143,10 @@ This is a non-destructive baseline for migrating from Dotbot to chezmoi. It reco
 3. Preserve public/private intent using `private_`, encryption, and `.chezmoiignore`; do not blindly copy `dotfiles-local`.
 4. Keep `~/.zshenv` minimal; most complexity belongs in `~/.config/shell` and `~/.config/zsh`.
 5. Separate desired state from observed app state. App-generated plists, backups, caches, histories, sockets, and keyrings are not dotfiles.
+
+## User direction updates — 2026-05-18
+
+- Keep the `homebrew-brewfile` repository as the source of truth for the Brewfile collection. Chezmoi may manage Homebrew-related environment/configuration files and pointers, but not absorb the Brewfile repo contents.
+- Do not import WezTerm; it is no longer in active use.
+- Keep coding-agent and GenAI-related configuration/context files on the migration backlog. Import them only after allowlist review and with chezmoi-native encryption/templates for private values.
+- Treat this chezmoi repo as the future alignment-enforced source of truth for cross-machine configuration: simple, elegant, powerful, portable, and explicit about public/private/local/generated boundaries.

@@ -256,44 +256,55 @@ chezmoi add ~/.cookiecutterrc
 chezmoi diff ~/.config/ruff ~/.config/uv ~/.cookiecutterrc
 ```
 
-### Task 4.2: Import terminal/file-manager configs after review
+### Task 4.2: Import reviewed file-manager config only
 
-**Objective:** Bring user-facing app configs into chezmoi without importing generated files.
+**Objective:** Bring active user-facing app configs into chezmoi without importing generated/vendor files.
 
 **Files:**
-- Candidate: `~/.config/wezterm/*.lua`
-- Candidate: `~/.config/yazi/*.toml`
+- Imported: `~/.config/yazi/yazi.toml`
+- Imported: `~/.config/yazi/package.toml`
+- Deferred/ignored: `~/.config/yazi/plugins/**` downloaded plugin code
+- Excluded by user direction: `~/.config/wezterm/**`
 
 **Steps:**
 
 ```bash
-chezmoi add ~/.config/wezterm/wezterm.lua ~/.config/wezterm/settings.lua ~/.config/wezterm/keys.lua ~/.config/wezterm/appearance.lua
-chezmoi add ~/.config/yazi/yazi.toml ~/.config/yazi/package.toml
-chezmoi diff ~/.config/wezterm ~/.config/yazi
+chezmoi diff ~/.config/yazi/yazi.toml ~/.config/yazi/package.toml
+python3 - <<'PY'
+import tomllib, pathlib
+for p in [pathlib.Path('dot_config/yazi/yazi.toml'), pathlib.Path('dot_config/yazi/package.toml')]:
+    tomllib.loads(p.read_text())
+PY
 ```
 
 ## Phase 5: Package management
 
-### Task 5.1: Import Homebrew files
+### Task 5.1: Import Homebrew configuration, not the Brewfile collection
 
-**Objective:** Preserve existing domain/host-specific Brewfiles and prepare for templating.
+**Objective:** Manage Homebrew environment/configuration while keeping `homebrew-brewfile` as the separate Brewfile collection repository.
 
 **Files:**
-- Source: `~/.config/homebrew`
-- Create: `dot_config/homebrew/`
+- Source: `~/.config/homebrew/brew.env`
+- Source: `~/.config/homebrew/.Brewfile`
+- Source: `~/.config/shell/plugins/homebrew-file.sh`
+- Create: `dot_config/homebrew/brew.env.tmpl`
+- Create: `dot_config/homebrew/dot_Brewfile`
+- Create: `dot_config/shell/plugins/homebrew-file.sh`
+- Do not import: `~/.config/homebrew/pjbeyer_homebrew-brewfile/`
 
 **Steps:**
 
 ```bash
-chezmoi add --recursive ~/.config/homebrew
-chezmoi diff ~/.config/homebrew
+chezmoi diff ~/.config/homebrew/brew.env ~/.config/homebrew/.Brewfile ~/.config/shell/plugins/homebrew-file.sh
+chezmoi execute-template < dot_config/homebrew/brew.env.tmpl >/tmp/brew.env && bash -n /tmp/brew.env
+chezmoi execute-template < dot_config/shell/plugins/homebrew-file.sh >/tmp/homebrew-file.sh && bash -n /tmp/homebrew-file.sh
 ```
 
-**Follow-up template guidance:**
+**Follow-up guidance:**
 
-- Use `.chezmoi.hostname` to select host Brewfiles.
-- Use OS/arch guards so Linux machines ignore Darwin-only package files.
-- Consider a run script that prints the brew command rather than installing automatically at first.
+- Keep package lists, host Brewfiles, and domain Brewfiles in the external `homebrew-brewfile` repository.
+- Use chezmoi for the environment variables, shell plugin wiring, and optional future bootstrap scripts that clone/update the external repo.
+- Do not run `brew bundle` automatically until the constitution/specs define package-management safety gates.
 
 ## Phase 6: Private/local config
 
@@ -383,9 +394,12 @@ plutil -lint ~/Library/LaunchAgents/environment.plist
 **Candidates:**
 - `~/.config/opencode`
 - `~/.config/claude`
+- `~/.config/hermes` / `~/.hermes` where appropriate
 - `~/.config/agents`
 - `~/.config/gemini`
 - `~/.config/goose`
+- `~/.codex` / Codex CLI config if present
+- Aider and other coding-agent configs if present
 - `~/.config/gws`
 - `~/.config/flex`
 
@@ -396,7 +410,7 @@ plutil -lint ~/Library/LaunchAgents/environment.plist
    find ~/.config/opencode ~/.config/claude ~/.config/agents -maxdepth 3 -type f | sort
    ```
 2. Classify each file as portable, private, local, generated, or ignore.
-3. Import only allowlisted files with `chezmoi add`.
+3. Import only allowlisted files with `chezmoi add`, `chezmoi add --template`, or chezmoi-native encryption for private values.
 4. Update `docs/dotfiles-migration-inventory.md` with the decision.
 
 ## Final verification before first apply

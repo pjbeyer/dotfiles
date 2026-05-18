@@ -18,6 +18,12 @@ key.txt.age
 **/.cache/**
 **/package-lock.json
 
+# external source repositories / downloaded plugins
+.config/homebrew/pjbeyer_homebrew-brewfile/**
+dot_config/homebrew/pjbeyer_homebrew-brewfile/**
+.config/yazi/plugins/**
+dot_config/yazi/plugins/**
+
 # GnuPG state/keyrings/sockets/locks
 **/gnupg/private-keys-v1.d/**
 **/gnupg/pubring.kbx*

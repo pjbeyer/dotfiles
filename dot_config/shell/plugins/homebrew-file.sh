@@ -1,0 +1,3 @@
+export HOMEBREW_BREWFILE=$XDG_CONFIG_HOME/homebrew/.Brewfile
+export HOMEBREW_BREWFILE_LEAVES=1
+source $HOMEBREW_PREFIX/etc/brew-wrap
