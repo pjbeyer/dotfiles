@@ -1,1 +1,10 @@
-path_prepend "$XDG_BIN_HOME"
+# User-local binaries
+[ -n "${XDG_BIN_HOME:-}" ] && [ -d "$XDG_BIN_HOME" ] && path_prepend "$XDG_BIN_HOME"
+
+# npm global prefix
+export NPM_CONFIG_PREFIX="${NPM_CONFIG_PREFIX:-$HOME/.npm-global}"
+[ -d "$NPM_CONFIG_PREFIX/bin" ] && path_prepend "$NPM_CONFIG_PREFIX/bin"
+
+# Composio CLI
+export COMPOSIO_INSTALL_DIR="${COMPOSIO_INSTALL_DIR:-$HOME/.composio}"
+[ -d "$COMPOSIO_INSTALL_DIR" ] && path_prepend "$COMPOSIO_INSTALL_DIR"

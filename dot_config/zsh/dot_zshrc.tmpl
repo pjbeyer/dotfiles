@@ -1,3 +1,12 @@
+# Load shared shell functions and PATH for interactive non-login shells.
+if [ -r "$XDG_CONFIG_HOME/shell/functions.sh" ]; then
+    source "$XDG_CONFIG_HOME/shell/functions.sh"
+fi
+
+if [ -r "$XDG_CONFIG_HOME/shell/path.sh" ]; then
+    source "$XDG_CONFIG_HOME/shell/path.sh"
+fi
+
 # Load Zsh plugins
 source $ZDOTDIR/plugins/antigen.zsh
 
@@ -12,6 +21,15 @@ source $XDG_CONFIG_HOME/shell/plugins/homebrew-file.sh
 for func in $ZDOTDIR/functions/*.zsh; do
     source "$func"
 done
+
+# Compatibility: some installers append zsh snippets to ~/.zshrc even though
+# this setup uses ZDOTDIR=$XDG_CONFIG_HOME/zsh. Source it as an installer
+# compatibility sink, not as canonical configuration.
+if [ -r "$HOME/.zshrc" ] && [ -z "${PJB_SKIP_HOME_ZSHRC:-}" ]; then
+    export PJB_SKIP_HOME_ZSHRC=1
+    source "$HOME/.zshrc"
+    unset PJB_SKIP_HOME_ZSHRC
+fi
 
 # Allow local customization
 if [ -e $XDG_CONFIG_HOME/local/zsh/zshrc ]; then
