@@ -28,6 +28,12 @@ dot_config/yazi/plugins/**
 **/gnupg/S.gpg-agent*
 **/gnupg/.#lk*
 
+# Allow selected stable command shims under ~/.local even though chezmoi ignores
+# ~/.local by default; do not import caches/state beneath ~/.local wholesale.
+!.local
+!.local/bin
+!.local/bin/git-ai
+
 # tool backups/local overrides
 **/*.backup-*
 **/*.bak.*
