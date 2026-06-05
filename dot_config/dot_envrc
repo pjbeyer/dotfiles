@@ -1,0 +1,2 @@
+# Load parent-scoped environment resources, then this directory's .env.
+use pjb_env up

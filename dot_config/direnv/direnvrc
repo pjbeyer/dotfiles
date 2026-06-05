@@ -1,0 +1,90 @@
+# Inject 1Password-backed environment values after an .envrc loads .env.
+#
+# A single inherited environment can contain op:// refs from multiple
+# 1Password accounts. Resolve each assignment against the account that owns its
+# vault instead of relying on whichever account `op` happens to select.
+__sourceop_personal_account="IVLPT635W5FFXAZPLAV6OIKBPY"
+__sourceop_work_account="X4LY3SSFN5DQ3KBRT5IYIHTDMU"
+
+__sourceop_account_for_line() {
+  case "$1" in
+    *'op://Getting Security Done/'*|*'op://Private/'*|*'op://Hermes/'*|*'op://Shared/'*)
+      printf '%s\n' "$__sourceop_personal_account"
+      ;;
+    *'op://Employee/'*|*'op://Flex - Engineering/'*|*'op://Flex AI Tools/'*|*'op://Hermes (pjb-flex)/'*)
+      printf '%s\n' "$__sourceop_work_account"
+      ;;
+  esac
+}
+
+__sourceop_filter_for_account() {
+  local account line
+  account="$1"
+
+  while IFS= read -r line; do
+    [ -n "$line" ] || continue
+    [ "$(__sourceop_account_for_line "$line")" = "$account" ] && printf '%s\n' "$line"
+  done
+}
+
+__sourceop_filter_unmatched() {
+  local line
+
+  while IFS= read -r line; do
+    [ -n "$line" ] || continue
+    [ -z "$(__sourceop_account_for_line "$line")" ] && printf '%s\n' "$line"
+  done
+}
+
+__sourceop_inject_group() {
+  local account group
+  account="$1"
+  group="$2"
+  [ -n "$group" ] || return 0
+
+  if [ -n "$account" ]; then
+    op inject --account "$account" <<< "$group"
+  elif [ -n "${OP_ACCOUNT:-}" ]; then
+    op inject --account "$OP_ACCOUNT" <<< "$group"
+  else
+    op inject <<< "$group"
+  fi
+}
+
+use_sourceop() {
+  local lines personal_lines work_lines unmatched_lines
+  lines="$(printenv | grep -F 'op://' || true)"
+  [ -n "$lines" ] || return 0
+
+  personal_lines="$(printf '%s\n' "$lines" | __sourceop_filter_for_account "$__sourceop_personal_account")"
+  work_lines="$(printf '%s\n' "$lines" | __sourceop_filter_for_account "$__sourceop_work_account")"
+  unmatched_lines="$(printf '%s\n' "$lines" | __sourceop_filter_unmatched)"
+
+  source <(
+    __sourceop_inject_group "$__sourceop_personal_account" "$personal_lines"
+    __sourceop_inject_group "$__sourceop_work_account" "$work_lines"
+    __sourceop_inject_group "" "$unmatched_lines"
+  )
+
+  # GitHub CLI and many libraries prefer GH_TOKEN, while some tooling still
+  # checks GITHUB_PERSONAL_ACCESS_TOKEN. Keep the compatibility alias aligned
+  # whenever a scoped default GH_TOKEN is present.
+  if [ -n "${GH_TOKEN:-}" ]; then
+    export GITHUB_PERSONAL_ACCESS_TOKEN="$GH_TOKEN"
+  fi
+}
+
+# Standard HOME hierarchy loader:
+#   use pjb_env     -> load .env in the current directory, then resolve op:// refs
+#   use pjb_env up  -> first source the nearest parent .envrc, then load current .env
+use_pjb_env() {
+  if [ "${1:-}" = "up" ]; then
+    source_up_if_exists
+  fi
+
+  dotenv_if_exists ".env"
+  use sourceop
+}
+
+# Load local overrides if the file exists.
+source_env_if_exists ".envrc.local"

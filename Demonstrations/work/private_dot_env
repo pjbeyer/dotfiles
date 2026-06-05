@@ -1,0 +1,11 @@
+# Work/Flex GitHub profile.
+GH_TOKEN="op://Employee/lykncpq4ixy6bmkpazimqgolbm/token"
+GITHUB_PERSONAL_ACCESS_TOKEN="op://Employee/lykncpq4ixy6bmkpazimqgolbm/token"
+GH_TOKEN_PJB_FLEX="op://Employee/lykncpq4ixy6bmkpazimqgolbm/token"
+GH_TOKEN_FLEXAPP="op://Employee/kjonskqeno7a2jds3twdv6edsy/token"
+
+OP_ACCOUNT="X4LY3SSFN5DQ3KBRT5IYIHTDMU"
+JIRA_API_TOKEN="op://Employee/5riaxe6t6w3qvtsljr4mga5eca/credential"
+JIRA_USERNAME="op://Employee/5riaxe6t6w3qvtsljr4mga5eca/username"
+ANTHROPIC_API_KEY="op://Employee/neu3chkh3apnzb7bx6pfobdzim/credential"
+ZAPIER_API_KEY="op://Employee/v7ggypz2gisj44w4z2p3qvkjby/credential"

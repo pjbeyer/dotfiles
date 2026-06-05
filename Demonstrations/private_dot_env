@@ -1,0 +1,5 @@
+# GitHub account-scoped tokens for git credential routing.
+# Generic GH_TOKEN/GITHUB_PERSONAL_ACCESS_TOKEN stay profile-local.
+GH_TOKEN_PJBEYER="op://Getting Security Done/weo3nzir4se6ivpgssqfmsuili/token"
+GH_TOKEN_PJB_FLEX="op://Employee/lykncpq4ixy6bmkpazimqgolbm/token"
+GH_TOKEN_FLEXAPP="op://Employee/kjonskqeno7a2jds3twdv6edsy/token"
